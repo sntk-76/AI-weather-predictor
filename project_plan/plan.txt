@@ -1,0 +1,219 @@
+# 🌦️ **Project Plan: AI Weather Predictor**
+
+> **An MLOps-ready, 7-day weather forecasting and insight generation system powered by a custom-trained ML model and enriched with LLM-based natural-language explanations. Deployed using GCP, Prefect, Flask, and Streamlit.**
+
+---
+
+## 📌 **Project Overview**
+
+| Field            | Description                                                                        |
+| ---------------- | ---------------------------------------------------------------------------------- |
+| **Project Name** | `ai-weather-predictor`                                                             |
+| **Goal**         | Predict 7-day weather forecasts for any city, with human-readable explanations     |
+| **Tech Stack**   | GCP, Terraform, Prefect, Python, scikit-learn, MLflow, Flask, Streamlit, Evidently |
+| **Unique Angle** | Predict multiple features (not just temp), generate LLM-based explanations         |
+| **Frontend**     | Streamlit app (final stage)                                                        |
+| **Backend API**  | Flask (with model + LLM)                                                           |
+
+---
+
+## 📊 **Dataset**
+
+| Source     | Meteostat API & CSV Bulk Export                                                |
+| ---------- | ------------------------------------------------------------------------------ |
+| Data Type  | Historical daily weather data for multiple cities                              |
+| Features   | Temperature (min, max, avg), humidity, wind speed, pressure, cloud cover, etc. |
+| Labels     | 7-day ahead forecast for each feature                                          |
+| City Scope | 10–50 cities from varied global climates                                       |
+| Storage    | Google Cloud Storage (GCS)                                                     |
+
+---
+
+## 📅 **Project Phases and Steps**
+
+---
+
+### 🔹 **Phase 1: Infrastructure Setup with Terraform**
+
+> Set up the cloud infrastructure to support model training, storage, and deployment.
+
+**Steps:**
+
+* Create GCP project and enable APIs
+* Use Terraform to provision:
+
+  * Compute Engine (or Cloud Run)
+  * Cloud Storage (for data and models)
+  * IAM roles and service accounts
+* Set up Docker for model & API containers
+
+**Tools:**
+
+* Terraform, GCP Console, Docker
+
+---
+
+### 🔹 **Phase 2: Data Collection & Storage**
+
+> Fetch and store the historical weather data for multiple global cities.
+
+**Steps:**
+
+* Select diverse cities (geographically and climatically)
+* Fetch daily data using the `meteostat` Python API
+* Clean and structure datasets
+* Store datasets in GCS
+https://meteostat.net/
+https://dev.meteostat.net/
+
+**Tools:**
+
+* `meteostat`, `pandas`, Google Cloud Storage
+
+---
+
+### 🔹 **Phase 3: Feature Engineering & Label Creation**
+
+> Create meaningful features and multi-output labels for 7-day predictions.
+
+**Steps:**
+
+* Engineer lag features (past 7–14 days)
+* Add time-based features (day of year, month, weekday)
+* Include location info (lat/lon)
+* Create 7-day forward-looking target columns for each weather element
+* Split data for training and validation
+
+**Tools:**
+
+* `pandas`, `scikit-learn`
+
+---
+
+### 🔹 **Phase 4: Model Training & Experiment Tracking**
+
+> Train a generalizable weather prediction model and log experiments.
+
+**Steps:**
+
+* Train a multi-output regressor (XGBoost, LightGBM, etc.)
+* Evaluate accuracy (MAE, RMSE per day)
+* Log all runs with MLflow (on local or GCP VM)
+* Save best model to GCS or MLflow registry
+
+**Tools:**
+
+* `scikit-learn`, `xgboost`, `mlflow`, `joblib`
+
+---
+
+### 🔹 **Phase 5: Pipeline Automation with Prefect**
+
+> Build a repeatable and schedulable ML workflow.
+
+**Steps:**
+
+* Build Prefect flow:
+
+  * Data fetch
+  * Preprocessing
+  * Training
+  * Evaluation
+  * Model upload
+* Optionally set flow schedules (weekly retrain)
+
+**Tools:**
+
+* `Prefect`, `mlflow`, `Python scripts`, `Makefile`
+
+---
+
+### 🔹 **Phase 6: LLM-Based Explanation Engine**
+
+> Generate natural-language summaries of 7-day forecasts.
+
+**Steps:**
+
+* Format model outputs into structured input
+* Design prompt templates for OpenAI API (or optional local model)
+* Test and tune explanations (clarity, tone, value)
+* Bundle prediction + explanation into a unified response
+
+**Tools:**
+
+* `OpenAI API`, or Hugging Face LLMs (e.g., TinyLlama)
+* `prompt_toolkit`, `pydantic` (for clean input/output formats)
+
+---
+
+### 🔹 **Phase 7: Model Serving with Flask**
+
+> Build an API that returns the forecast and explanation for any city.
+
+**Steps:**
+
+* Create `/predict?city=...` endpoint
+* Internally:
+
+  * Fetch recent weather
+  * Generate features
+  * Run model prediction
+  * Run explanation engine
+  * Return JSON response
+* Dockerize and deploy to GCP
+
+**Tools:**
+
+* `Flask`, `Docker`, GCP Compute Engine or Cloud Run
+
+---
+
+### 🔹 **Phase 8: Monitoring with Evidently**
+
+> Monitor for model drift and data quality changes.
+
+**Steps:**
+
+* Save incoming user input logs
+* Compare with training distribution weekly
+* Run Evidently reports (data drift, prediction drift)
+* Store or display reports via Streamlit
+
+**Tools:**
+
+* `evidently`, `pandas`, `MLflow`, optional Prometheus
+
+---
+
+### 🔹 **Phase 9: Streamlit Frontend (Final Phase)**
+
+> Create the interactive web interface.
+
+**Features:**
+
+* City input field
+* Forecast table (7 days × weather features)
+* Visualizations (charts, maps, etc.)
+* Natural-language explanation panel
+* (Optional) Alert and suggestion cards
+* (Optional) Show Evidently drift reports
+
+**Tools:**
+
+* `Streamlit`, `requests`, `plotly`, `matplotlib`, `streamlit.components`
+
+---
+
+## ✅ Bonus Enhancements (Optional)
+
+| Feature                      | Description                                |
+| ---------------------------- | ------------------------------------------ |
+| Confidence score per day     | Indicate prediction certainty              |
+| Risk-based alerts            | “High chance of frost” or “Extreme UV”     |
+| Multi-city comparison mode   | Compare forecasts for multiple cities      |
+| Activity suggestions         | “Good day for running” based on conditions |
+| Language toggle (LLM output) | Multilingual explanation using OpenAI      |
+
+---
+
+
