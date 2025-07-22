@@ -9,3 +9,4 @@ oauth2client
 openpyxl
 geopy
 meteostat
+opencage
