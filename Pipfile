@@ -1,0 +1,29 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+meteostat = "*"
+geopy = "*"
+tqdm = "*"
+scikit-learn = "*"
+joblib = "*"
+mlflow = "*"
+lightgbm = "*"
+nbconvert = "*"
+tensorflow = "*"
+pandas = "*"
+openai = "*"
+python-dotenv = "*"
+numpy = "*"
+streamlit = "*"
+gspread = "*"
+oauth2client = "*"
+openpyxl = "*"
+
+[dev-packages]
+ipykernel = "*"
+
+[requires]
+python_version = "3.12"

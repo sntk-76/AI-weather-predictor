@@ -1,0 +1,26 @@
+channels:
+- conda-forge
+dependencies:
+- python=3.11.13
+- pip<=24.1.2
+- pip:
+  - mlflow==3.1.1
+  - dataproc-spark-connect==0.7.5
+  - google-cloud-aiplatform==1.99.0
+  - google-cloud-automl==1.0.1
+  - google-cloud-bigquery-connection==1.18.3
+  - google-cloud-datastore==2.21.0
+  - google-cloud-firestore==2.21.0
+  - google-cloud-functions==1.20.4
+  - google-cloud-iam==2.19.1
+  - google-cloud-language==2.17.2
+  - google-cloud-spanner==3.55.0
+  - google-cloud-translate==3.12.1
+  - google-cloud-videointelligence==2.16.2
+  - google-cloud-vision==3.10.2
+  - google-colab==1.0.0
+  - google-generativeai==0.8.5
+  - keras==3.8.0
+  - numpy==1.26.4
+  - tensorflow==2.18.0
+name: mlflow-env

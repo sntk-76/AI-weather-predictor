@@ -1,0 +1,14 @@
+artifact_uri: /kaggle/working/mlflow/202244017984435409/15b2f0cc5b23402b9fceece603113bfc/artifacts
+end_time: 1753179362999
+entry_point_name: ''
+experiment_id: '202244017984435409'
+lifecycle_stage: active
+run_id: 15b2f0cc5b23402b9fceece603113bfc
+run_name: Improved_Model_Training
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1753178206942
+status: 3
+tags: []
+user_id: root

@@ -213,6 +213,15 @@ __marimo__/
 #excluding json files
 *.json
 
+#excluding environmental variables : 
+*.env
+
+#excluding the .toml file:
+*.toml
+
+#excluding data : 
+*.npy
+
 # Created by https://gitignore.org
 # Terraform.gitignore
 
