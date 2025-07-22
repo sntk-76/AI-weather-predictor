@@ -15,9 +15,6 @@ from dotenv import load_dotenv
 from sheet_logger import log_to_google_sheet
 from google.oauth2.service_account import Credentials
 
-st.write("HTTP_PROXY:", os.environ.get("HTTP_PROXY"))
-st.write("HTTPS_PROXY:", os.environ.get("HTTPS_PROXY"))
-
 # --- 🔐 Load API Key ---
 client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
@@ -50,7 +47,7 @@ def build_prompt(forecast_df,city):
 # --- LLM Call ---
 def llm(prompt):
     response = client.chat.completions.create(
-        model="gpt-3.5-turbo",
+        model="gpt-4o-mini",
         messages=[{"role": "user", "content": prompt}]
     )
     return response.choices[0].message.content
