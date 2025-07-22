@@ -1,6 +1,6 @@
 streamlit
-tensorflow==2.15.0
-keras==3.0.5
+tensorflow==2.13.0
+keras==2.13.1
 pandas
 numpy
 openai>=1.2.3
@@ -11,3 +11,4 @@ openpyxl
 geopy
 meteostat
 opencage
+typing-extensions==4.5.0
