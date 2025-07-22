@@ -6,13 +6,13 @@ import os
 from tensorflow.keras.models import load_model
 from data_collector import data_downloader
 from preprocessing import main as preprocess_pipeline
-import openai
+from openai import OpenAI
 from dotenv import load_dotenv
 from sheet_logger import log_to_google_sheet
 from google.oauth2.service_account import Credentials
 
 # --- 🔐 Load API Key ---
-client = openai.OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
+client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
 # --- 🔮 Build Prompt for LLM ---
 def build_prompt(forecast_df,city):
@@ -43,7 +43,7 @@ def build_prompt(forecast_df,city):
 # --- LLM Call ---
 def llm(prompt):
     response = client.chat.completions.create(
-        model="gpt-4o-mini",
+        model="gpt-3.5-turbo",
         messages=[{"role": "user", "content": prompt}]
     )
     return response.choices[0].message.content
