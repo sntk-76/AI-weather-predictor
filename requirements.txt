@@ -3,7 +3,7 @@ tensorflow==2.13.0
 keras==2.13.1
 pandas
 numpy
-openai==1.12.0
+openai==1.3.9
 python-dotenv
 gspread
 oauth2client
