@@ -1,10 +1,9 @@
 streamlit
 tensorflow==2.15.0
-keras==3.0.0
+keras==3.0.5
 pandas
 numpy
-openai==0.28.1
-typing-extensions==4.5.0
+openai>=1.2.3
 python-dotenv
 gspread
 oauth2client
