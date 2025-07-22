@@ -3,6 +3,10 @@ from datetime import datetime
 import pandas as pd
 import numpy as np
 import os
+os.environ.pop("HTTP_PROXY", None)
+os.environ.pop("HTTPS_PROXY", None)
+os.environ.pop("http_proxy", None)
+os.environ.pop("https_proxy", None)
 from tensorflow.keras.models import load_model
 from data_collector import data_downloader
 from preprocessing import main as preprocess_pipeline
