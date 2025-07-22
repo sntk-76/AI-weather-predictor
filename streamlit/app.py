@@ -74,7 +74,7 @@ if st.button("🔍 Get Forecast"):
             X_input = X_all[-1:].astype(np.float32)
 
             st.toast("📦 Loading model...")
-            model = load_weather_model()
+            model = load_weather_model(path="streamlit/weather_model.keras")
 
             st.toast("🤖 Predicting next 7 days...")
             y_pred = model.predict(X_input)[0]
