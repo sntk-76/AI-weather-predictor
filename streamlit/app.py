@@ -1,12 +1,12 @@
-import streamlit as st
-from datetime import datetime
-import pandas as pd
-import numpy as np
 import os
 os.environ.pop("HTTP_PROXY", None)
 os.environ.pop("HTTPS_PROXY", None)
 os.environ.pop("http_proxy", None)
 os.environ.pop("https_proxy", None)
+import streamlit as st
+from datetime import datetime
+import pandas as pd
+import numpy as np
 from tensorflow.keras.models import load_model
 from data_collector import data_downloader
 from preprocessing import main as preprocess_pipeline
@@ -14,6 +14,9 @@ from openai import OpenAI
 from dotenv import load_dotenv
 from sheet_logger import log_to_google_sheet
 from google.oauth2.service_account import Credentials
+
+st.write("HTTP_PROXY:", os.environ.get("HTTP_PROXY"))
+st.write("HTTPS_PROXY:", os.environ.get("HTTPS_PROXY"))
 
 # --- 🔐 Load API Key ---
 client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
