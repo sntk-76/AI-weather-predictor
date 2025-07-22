@@ -12,8 +12,8 @@ from sheet_logger import log_to_google_sheet
 from google.oauth2.service_account import Credentials
 
 # --- 🔐 Load API Key ---
-key = st.secrets["OPENAI_API_KEY"]
-openai = OpenAI(api_key=key)
+os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
+openai = OpenAI()
 
 # --- 🔮 Build Prompt for LLM ---
 def build_prompt(forecast_df,city):
