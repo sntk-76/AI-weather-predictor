@@ -86,20 +86,30 @@ if st.button("🔍 Get Forecast"):
             targets = ['tavg', 'tmin', 'tmax', 'wspd', 'prcp', 'snow']
             forecast_df = pd.DataFrame(y_pred, columns=targets)
 
-            forecast_df[['tavg', 'tmin', 'tmax', 'snow']] = forecast_df[['tavg', 'tmin', 'tmax', 'snow']].round(0).astype(int)
-            forecast_df['Rain?'] = np.where(forecast_df['prcp'] >= 0.5, 'Yes', 'No')
-            forecast_df['Rain_Prob (%)'] = (forecast_df['prcp'] * 100).clip(lower=0).astype(int)
-            forecast_df['Snow?'] = np.where(forecast_df['snow'] >= 0.5, 'Yes', 'No')
-            forecast_df['Snow_Prob (%)'] = (forecast_df['snow'] * 100).clip(lower=0).astype(int)
+            forecast_df[['tavg', 'tmin', 'tmax']] = forecast_df[['tavg', 'tmin', 'tmax']].round(0).astype(int)
 
-            forecast_df.drop(columns=['prcp', 'snow', 'wspd'], inplace=True)
+
+            forecast_df['prcp_raw'] = forecast_df['prcp'].clip(0, 1)
+            forecast_df['snow_raw'] = forecast_df['snow'].clip(0, 1)
+
+
+            forecast_df['Rain?'] = np.where(forecast_df['prcp_raw'] >= 0.5, 'Yes', 'No')
+            forecast_df['Rain_Prob (%)'] = (forecast_df['prcp_raw'] * 100).round(0).astype(int)
+
+            forecast_df['Snow?'] = np.where(forecast_df['snow_raw'] >= 0.5, 'Yes', 'No')
+            forecast_df['Snow_Prob (%)'] = (forecast_df['snow_raw'] * 100).round(0).astype(int)
+
+            forecast_df.drop(columns=['wspd', 'prcp', 'snow', 'prcp_raw', 'snow_raw'], inplace=True)
+
             forecast_df.rename(columns={
                 'tavg': 'Avg Temp (°C)',
                 'tmin': 'Min Temp (°C)',
                 'tmax': 'Max Temp (°C)'
             }, inplace=True)
+
             forecast_df.index = pd.date_range(start=pd.Timestamp.today() + pd.Timedelta(days=1), periods=7)
-            forecast_df.index.name = "📅 Date"
+            forecast_df.index.name = "Date"
+
 
             # --- Display forecast ---
             st.subheader(f"📊 7-Day Forecast for {city}")
