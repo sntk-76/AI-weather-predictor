@@ -1,6 +1,6 @@
 streamlit
-tensorflow==2.13.0
-keras==2.13.1
+tensorflow==2.15.0
+keras==3.0.0
 pandas
 numpy
 openai==0.28.1
