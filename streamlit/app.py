@@ -6,13 +6,13 @@ import os
 from tensorflow.keras.models import load_model
 from data_collector import data_downloader
 from preprocessing import main as preprocess_pipeline
-from openai import OpenAI
+import openai
 from dotenv import load_dotenv
 from sheet_logger import log_to_google_sheet
 from google.oauth2.service_account import Credentials
 
 # --- 🔐 Load API Key ---
-client = OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
+client = openai.OpenAI(api_key=st.secrets["OPENAI_API_KEY"])
 
 # --- 🔮 Build Prompt for LLM ---
 def build_prompt(forecast_df,city):
