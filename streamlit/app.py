@@ -9,10 +9,10 @@ from preprocessing import main as preprocess_pipeline
 from openai import OpenAI
 from dotenv import load_dotenv
 from sheet_logger import log_to_google_sheet
+from google.oauth2.service_account import Credentials
 
 # --- 🔐 Load API Key ---
-load_dotenv("/home/sina.tvk.1997/AI-weather-predictor/authentication/keys.env")
-key = os.getenv("OPENAI_API_KEY")
+key = st.secrets["OPENAI_API_KEY"]
 openai = OpenAI(api_key=key)
 
 # --- 🔮 Build Prompt for LLM ---
