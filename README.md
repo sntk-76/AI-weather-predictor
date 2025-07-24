@@ -183,6 +183,9 @@ Using Terraform, the following components are provisioned on Google Cloud:
 * System fetches real-time weather data and makes 7-day predictions
 * GPT-4o-mini provides an intuitive weekly forecast summary
 * City searches are logged via Google Sheets for tracking and usage analysis
+* Access the live application here:
+👉 [https://ai-weather-predictor.streamlit.app/](https://ai-weather-predictor.streamlit.app/)
+
 
 ---
 
