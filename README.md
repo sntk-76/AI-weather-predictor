@@ -1,4 +1,4 @@
-[cover photo](https://github.com/sntk-76/AI-weather-predictor/blob/main/project_plan/other/cover.png)
+![Cover](https://github.com/sntk-76/AI-weather-predictor/blob/main/project_plan/other/cover.png?raw=true)
 
 # AI Weather Forecasting System
 
