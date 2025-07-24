@@ -156,6 +156,8 @@ Using Terraform, the following components are provisioned on Google Cloud:
 * A **BigQuery Dataset** for future analytics workflows
 * Configurable via `variables.tf` and securely authenticated using a service account JSON key
 
+![gcp](https://github.com/sntk-76/AI-weather-predictor/blob/main/project_plan/gcp/g1.png)
+
 ---
 
 ## Model Performance
@@ -176,6 +178,10 @@ Using Terraform, the following components are provisioned on Google Cloud:
 * Parameters: epochs, batch size, input/output shapes
 * Metrics: `loss`, `val_loss`, `mae`, `val_mae`
 * Model artifacts saved and zipped for portability
+
+![mlflow1](https://github.com/sntk-76/AI-weather-predictor/blob/main/project_plan/mlflow/1.png)
+![mlflow2](https://github.com/sntk-76/AI-weather-predictor/blob/main/project_plan/mlflow/2.png)
+![mlflow3](https://github.com/sntk-76/AI-weather-predictor/blob/main/project_plan/mlflow/3.png)
 
 ---
 
