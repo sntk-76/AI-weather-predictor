@@ -1,3 +1,5 @@
+[](https://github.com/sntk-76/AI-weather-predictor/blob/main/project_plan/other/cover.png)
+
 # AI Weather Forecasting System
 
 ## Overview
