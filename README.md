@@ -4,6 +4,10 @@
 
 This project is a production-grade, end-to-end machine learning pipeline that forecasts 7-day weather conditions for cities worldwide. It integrates modern MLOps tools, cloud infrastructure, deep learning architectures, a scalable preprocessing pipeline, and a conversational LLM interface. The final product is exposed via a web application that accepts user input and returns a human-readable forecast summary.
 
+**Access the live application here:**  
+👉 [https://ai-weather-predictor.streamlit.app/](https://ai-weather-predictor.streamlit.app/)
+
+
 ---
 
 ## Project Objective
