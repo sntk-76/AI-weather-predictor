@@ -1,7 +1,3 @@
-Here is a complete and professional `README.md` file that reflects the full scope of your end-to-end ML project, aligned with the course requirements, peer review rubric, and production-quality standards:
-
----
-
 # AI Weather Forecasting System
 
 ## Overview
