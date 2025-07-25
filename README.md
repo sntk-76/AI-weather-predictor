@@ -221,5 +221,3 @@ Using Terraform, the following components are provisioned on Google Cloud:
 This project is licensed under the MIT License.
 
 ---
-
-Let me know if you'd like this README exported as a PDF, included in your repository as a file, or styled with Markdown badges and sections.
